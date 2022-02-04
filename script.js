@@ -45,31 +45,31 @@ function roundWinner(playerSelection, computerSelection){
     switch (playerSelection) {
         case 'rock':
             if (computerSelection === "Rock") {
-                scoreHeading.textContent = "It\'s a tie!"
+                actionMessage.textContent = "It\'s a tie!"
             } else if (computerSelection === "Paper") {
-                scoreHeading.textContent = "You lose! Paper beats Rock";
+                actionMessage.textContent = "You lose! Paper beats Rock";
             } else {
-                scoreHeading.textContent = "You win! Rock beats Scissors";
+                actionMessage.textContent = "You win! Rock beats Scissors";
             }
             break;
             
             case 'paper':
                 if (computerSelection === "Rock") {
-                    scoreHeading.textContent = "You win! Paper beats Rock";
+                    actionMessage.textContent = "You win! Paper beats Rock";
                 } else if (computerSelection === "Paper") {
-                    scoreHeading.textContent = "It\'s a tie!";
+                    actionMessage.textContent = "It\'s a tie!";
                 } else {
-                    scoreHeading.textContent = "You lose! Scissors beats Paper!";
+                    actionMessage.textContent = "You lose! Scissors beats Paper!";
                 }
                 break;
                 
                 case 'scissors':
                     if (computerSelection === "Rock") {
-                        scoreHeading.textContent = "You lose! Rock beats Scissors";
+                        actionMessage.textContent = "You lose! Rock beats Scissors";
                     } else if (computerSelection === "Paper") {
-                        scoreHeading.textContent = "You win! Scissors beats Paper";
+                        actionMessage.textContent = "You win! Scissors beats Paper";
                     } else {
-                        scoreHeading.textContent = "It\'s a tie!";
+                        actionMessage.textContent = "It\'s a tie!";
                     }
                 break;
 
@@ -79,9 +79,9 @@ function roundWinner(playerSelection, computerSelection){
 function updateScore(winner) {
     if (scoreHeading.textContent.startsWith("It")) {
         return;
-    } else if (scoreHeading.textContent.startsWith("You win")) {
+    } else if (actionMessage.textContent.startsWith("You win")) {
         playerScore++;
-    } else if (scoreHeading.textContent.startsWith("You lose")) {
+    } else if (actionMessage.textContent.startsWith("You lose")) {
         computerScore++;
     }
     playerScorePara.textContent = `Player:  ${playerScore}`;
@@ -95,9 +95,9 @@ function updateScore(winner) {
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
-const scoreHeading = document.querySelector("#score-heading");
-const playerScorePara = document.querySelector("#player-score");
-const computerScorePara = document.querySelector("#computer-score");
+const actionMessage = document.querySelector("#action-message");
+const playerScorePara = document.querySelector("#player-label");
+const computerScorePara = document.querySelector("#computer-label");
 
 rock.addEventListener("click", singleRound);
 paper.addEventListener("click", singleRound);
