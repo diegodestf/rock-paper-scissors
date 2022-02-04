@@ -23,7 +23,7 @@ function gameOver() {
 function endGameMessage(){
 
     return playerScore > computerScore ? (scoreHeading.textContent = `The final score is Player: ${playerScore} to Computer: ${computerScore}. Player Wins!`) : 
-    `The final score is Player: ${playerScore} to Computer: ${computerScore}. Computer Wins!`;
+    (scoreHeading.textContent =`The final score is Player: ${playerScore} to Computer: ${computerScore}. Computer Wins!`);
 
 
 }
@@ -31,6 +31,7 @@ function endGameMessage(){
 
 function singleRound(e) {
     if (gameOver()) {
+        endGameMessage();
         alert("Game over. Press F5 to play again");
         return;
     }
