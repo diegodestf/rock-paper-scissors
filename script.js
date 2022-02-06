@@ -37,20 +37,33 @@ function endGameMessage(){
 
 }
 
-function win(){
+function convertChoice(choice){
+    if (choice === 'r') {
+        return "Rock";
+    }else if (choice === 'p') {
+        return "Paper";
+    }else {
+        return 'Scissors';
+    }
+}
+
+function win(playerSelection, computerSelection){
     playerScore++;
     playerScorePara.textContent = playerScore;
     computerScorePara.textContent = computerScore;
+    result.textContent = `You win! ${convertChoice(playerSelection)} beats ${convertChoice(computerSelection)}`;
 }
 
-function lose() {
+function lose(playerSelection, computerSelection) {
     computerScore++;
     playerScorePara.textContent = playerScore;
     computerScorePara.textContent = computerScore;
+    result.textContent = `You lose! ${convertChoice(computerSelection)} beats ${convertChoice(playerSelection)}`;
 
 }
 
-function draw(){
+function draw(playerSelection, computerSelection){
+    result.textContent = `It\'s a tie!`;
     return;
 }
 
@@ -60,33 +73,34 @@ function game(playerSelection){
         case 'pr':
         case 'sp':
         case 'rs':
-            win();
+            win(playerSelection, computerSelection);
             break;
         case 'rp':
         case 'ps':
         case 'sr':
-            lose()
+            lose(playerSelection, computerSelection)
             break;
         case 'rr':
         case 'pp':
         case 'ss':
-            draw();
+            draw(playerSelection, computerSelection);
             break;
 
     }
     if (gameOver()) {
         endGameMessage();
-        alert("Press F5 to play again.")
+        setTimeout(function () {alert("Press F5 to play again.")}, 500)
+        
     }
 }  
 
 
 rock.addEventListener("click", function() {
-    game("r")
+    game('r')
 });
 paper.addEventListener("click", function() {
-    game("p")
+    game('p')
 });
 scissors.addEventListener("click", function() {
-    game("s")
+    game('s')
 });
