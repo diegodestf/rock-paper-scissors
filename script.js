@@ -6,6 +6,8 @@ const playerScorePara = document.getElementById("player-score");
 const computerScorePara = document.getElementById("computer-score");
 const result = document.querySelector(".result > p");
 
+
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -52,6 +54,8 @@ function win(playerSelection, computerSelection){
     playerScorePara.textContent = playerScore;
     computerScorePara.textContent = computerScore;
     result.textContent = `You win! ${convertChoice(playerSelection)} beats ${convertChoice(computerSelection)}`;
+    winGlow(playerSelection);
+    
 }
 
 function lose(playerSelection, computerSelection) {
@@ -59,12 +63,67 @@ function lose(playerSelection, computerSelection) {
     playerScorePara.textContent = playerScore;
     computerScorePara.textContent = computerScore;
     result.textContent = `You lose! ${convertChoice(computerSelection)} beats ${convertChoice(playerSelection)}`;
+    loseGlow(playerSelection);
 
 }
 
 function draw(playerSelection, computerSelection){
     result.textContent = `It\'s a tie!`;
-    return;
+    drawGlow(playerSelection);
+    
+}
+
+//Adding these functions because document.getElementById(playerSelection).classList.add(glow) does not work and I don't know why.
+function winGlow(playerSelection){
+    switch (playerSelection) {
+        case 'r':
+            document.getElementById('rock').classList.add("green-glow");
+            setTimeout( () => document.getElementById('rock').classList.remove("green-glow"), 250);
+            break;
+        case 's':
+            document.getElementById('scissors').classList.add("green-glow");
+            setTimeout( () => document.getElementById('scissors').classList.remove("green-glow"), 500);
+            break;
+        case 'p':
+            document.getElementById('paper').classList.add("green-glow");
+            setTimeout( () => document.getElementById('paper').classList.remove("green-glow"), 500);
+            break;
+
+    }
+}
+
+function loseGlow(playerSelection) {
+    switch (playerSelection) {
+        case 'r':
+            document.getElementById('rock').classList.add("red-glow");
+            setTimeout( () => document.getElementById('rock').classList.remove("red-glow"), 500);
+            break;
+        case 's':
+            document.getElementById('scissors').classList.add("red-glow");
+            setTimeout( () => document.getElementById('scissors').classList.remove("red-glow"), 500);
+            break;
+        case 'p':
+            document.getElementById('paper').classList.add("green-glow");
+            setTimeout( () => document.getElementById('paper').classList.remove("red-glow"), 500);
+            break;
+    }
+
+}
+function drawGlow(playerSelection) {
+    switch (playerSelection) {
+        case 'r':
+            document.getElementById('rock').classList.add("gray-glow");
+            setTimeout( () => document.getElementById('rock').classList.remove("gray-glow"), 500);
+            break;
+        case 's':
+            document.getElementById('scissors').classList.add("gray-glow");
+            setTimeout( () => document.getElementById('scissors').classList.remove("gray-glow"), 500);
+            break;
+        case 'p':
+            document.getElementById('paper').classList.add("gray-glow");
+            setTimeout( () => document.getElementById('paper').classList.remove("gray-glow"), 500);
+}
+
 }
 
 function game(playerSelection){
@@ -95,12 +154,8 @@ function game(playerSelection){
 }  
 
 
-rock.addEventListener("click", function() {
-    game('r')
-});
-paper.addEventListener("click", function() {
-    game('p')
-});
-scissors.addEventListener("click", function() {
-    game('s')
-});
+    rock.addEventListener("click", () => game("r"));
+    paper.addEventListener("click", () => game("p"));
+    scissors.addEventListener("click", () => game("s"));
+
+    
