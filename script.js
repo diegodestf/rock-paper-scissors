@@ -82,11 +82,11 @@ function winGlow(playerSelection){
             break;
         case 's':
             document.getElementById('scissors').classList.add("green-glow");
-            setTimeout( () => document.getElementById('scissors').classList.remove("green-glow"), 500);
+            setTimeout( () => document.getElementById('scissors').classList.remove("green-glow"), 250);
             break;
         case 'p':
             document.getElementById('paper').classList.add("green-glow");
-            setTimeout( () => document.getElementById('paper').classList.remove("green-glow"), 500);
+            setTimeout( () => document.getElementById('paper').classList.remove("green-glow"), 250);
             break;
 
     }
@@ -96,15 +96,15 @@ function loseGlow(playerSelection) {
     switch (playerSelection) {
         case 'r':
             document.getElementById('rock').classList.add("red-glow");
-            setTimeout( () => document.getElementById('rock').classList.remove("red-glow"), 500);
+            setTimeout( () => document.getElementById('rock').classList.remove("red-glow"), 250);
             break;
         case 's':
             document.getElementById('scissors').classList.add("red-glow");
-            setTimeout( () => document.getElementById('scissors').classList.remove("red-glow"), 500);
+            setTimeout( () => document.getElementById('scissors').classList.remove("red-glow"), 250);
             break;
         case 'p':
-            document.getElementById('paper').classList.add("green-glow");
-            setTimeout( () => document.getElementById('paper').classList.remove("red-glow"), 500);
+            document.getElementById('paper').classList.add("red-glow");
+            setTimeout( () => document.getElementById('paper').classList.remove("red-glow"), 250);
             break;
     }
 
@@ -113,15 +113,15 @@ function drawGlow(playerSelection) {
     switch (playerSelection) {
         case 'r':
             document.getElementById('rock').classList.add("gray-glow");
-            setTimeout( () => document.getElementById('rock').classList.remove("gray-glow"), 500);
+            setTimeout( () => document.getElementById('rock').classList.remove("gray-glow"), 250);
             break;
         case 's':
             document.getElementById('scissors').classList.add("gray-glow");
-            setTimeout( () => document.getElementById('scissors').classList.remove("gray-glow"), 500);
+            setTimeout( () => document.getElementById('scissors').classList.remove("gray-glow"), 250);
             break;
         case 'p':
             document.getElementById('paper').classList.add("gray-glow");
-            setTimeout( () => document.getElementById('paper').classList.remove("gray-glow"), 500);
+            setTimeout( () => document.getElementById('paper').classList.remove("gray-glow"), 250);
 }
 
 }
